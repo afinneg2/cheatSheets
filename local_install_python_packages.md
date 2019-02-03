@@ -1,4 +1,4 @@
-##Methods for local installation of python packages (useful when working on cluster)
+## Methods for local installation of python packages (useful when working on cluster)
 
 List of methods:
 
@@ -8,7 +8,7 @@ II. Virtualenv (TODO: write this)
 
 ## I. Setup local install directory and ```pip install --user <packageName>```
 
-####Setup (Only need to do this once)
+#### Setup (Only need to do this once) 
 
 1. Create a ```.local```  directory for user-specific python packages:
 
