@@ -373,6 +373,7 @@ Markdown is a simple language that lets you write text, tables, code blocks (syn
 + Tar
 
   ​	```tar -zcvf archive-name.tar.gz directory-name```
+
   + see https://www.cyberciti.biz/faq/how-do-i-compress-a-whole-linux-or-unix-directory/
 
 + Untar
