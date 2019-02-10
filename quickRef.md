@@ -2,7 +2,7 @@ Quick/practical references for common tasks
 
 [TOC]
 
-#Coding
+# Coding 
 
 ## Bash
 
@@ -119,7 +119,7 @@ a="${:-default}"  ## if a undefined or empty string then set to default. Otherwi
 
 ## Python
 
-####Command line parsing: sys.argv
+#### Command line parsing: sys.argv
 
 ```python
 import sys
@@ -128,7 +128,7 @@ print( sys.argv[1])  ## First string after script name
 print(sys.argv[2])   ## Second string after script name
 ```
 
-####Comman line parsing: argparse
+#### Comman line parsing: argparse
 
 + TODO: basic example
 
@@ -190,7 +190,7 @@ if ( is.na(argv$param2) ){
 }
 ```
 
-####Install package locally
+#### Install package locally
 
 1. Download the .tar.gz file for package from https://cran.r-project.org/
 
@@ -206,7 +206,7 @@ if ( is.na(argv$param2) ){
    library("<pkgName>" , lib.loc="<My/local/lib>")
    ```
 
-####Installing multiple version on same machine
+#### Installing multiple version on same machine
 
 + https://irvingduran.com/2016/10/installing-multiple-version-of-r-on-the-same-machine-for-macos-mac/
 
@@ -238,7 +238,7 @@ awk '{printf "%s\t%s\t%s\n" , $1 , $2 , $3}'
 
 # Biocluster / SLURM
 
-####Setup local install directory and ```pip install --user <packageName>```
+#### Setup local install directory and ```pip install --user <packageName>```
 
 + Setup (Only need to do this once) 
 
@@ -310,7 +310,7 @@ EOF
 
 # Git and githib
 
-####Push to remote repository (remote repository URL already set)
+#### Push to remote repository (remote repository URL already set)
 
  1. Stage (adds files in local repository to set of staged files)
 

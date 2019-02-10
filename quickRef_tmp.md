@@ -2,6 +2,7 @@
 Table of Contents
 =================
 
+   * [Coding](#coding)
       * [Bash](#bash)
             * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty)
             * [Command line parsing: getopts](#command-line-parsing-getopts)
@@ -12,22 +13,28 @@ Table of Contents
             * [Named arrays](#named-arrays)
             * [Redirection of multiple input streams](#redirection-of-multiple-input-streams)
       * [Python](#python)
+            * [Command line parsing: sys.argv](#command-line-parsing-sysargv)
+            * [Comman line parsing: argparse](#comman-line-parsing-argparse)
             * [Matplotlib](#matplotlib)
       * [R](#r)
             * [Read file into array](#read-file-into-array)
             * [Write array](#write-array)
             * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty-1)
             * [Command line parsing: argparser library](#command-line-parsing-argparser-library)
+            * [Install package locally](#install-package-locally)
+            * [Installing multiple version on same machine](#installing-multiple-version-on-same-machine)
       * [AWK](#awk)
             * [If/else](#ifelse)
             * [passing external variables](#passing-external-variables)
             * [printf](#printf)
    * [Biocluster / SLURM](#biocluster--slurm)
+            * [Setup local install directory and pip install --user &lt;packageName&gt;](#setup-local-install-directory-and-pip-install---user-packagename)
             * [sbatch - basic](#sbatch---basic)
             * [sbatch - without slurm script](#sbatch---without-slurm-script)
    * [Jupyter notebooks](#jupyter-notebooks)
             * [Use the full window](#use-the-full-window)
    * [Git and githib](#git-and-githib)
+            * [Push to remote repository (remote repository URL already set)](#push-to-remote-repository-remote-repository-url-already-set)
             * [Check if local repository is up-to-date](#check-if-local-repository-is-up-to-date)
             * [Force git pull to overwrite local files](#force-git-pull-to-overwrite-local-files)
             * [References](#references)
@@ -38,9 +45,8 @@ Table of Contents
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 Quick/practical references for common tasks
 
-[TOC]
 
-#Coding
+# Coding 
 
 ## Bash
 
@@ -157,7 +163,7 @@ a="${:-default}"  ## if a undefined or empty string then set to default. Otherwi
 
 ## Python
 
-####Command line parsing: sys.argv
+#### Command line parsing: sys.argv
 
 ```python
 import sys
@@ -166,7 +172,7 @@ print( sys.argv[1])  ## First string after script name
 print(sys.argv[2])   ## Second string after script name
 ```
 
-####Comman line parsing: argparse
+#### Comman line parsing: argparse
 
 + TODO: basic example
 
@@ -228,7 +234,7 @@ if ( is.na(argv$param2) ){
 }
 ```
 
-####Install package locally
+#### Install package locally
 
 1. Download the .tar.gz file for package from https://cran.r-project.org/
 
@@ -244,7 +250,7 @@ if ( is.na(argv$param2) ){
    library("<pkgName>" , lib.loc="<My/local/lib>")
    ```
 
-####Installing multiple version on same machine
+#### Installing multiple version on same machine
 
 + https://irvingduran.com/2016/10/installing-multiple-version-of-r-on-the-same-machine-for-macos-mac/
 
@@ -276,7 +282,7 @@ awk '{printf "%s\t%s\t%s\n" , $1 , $2 , $3}'
 
 # Biocluster / SLURM
 
-####Setup local install directory and ```pip install --user <packageName>```
+#### Setup local install directory and ```pip install --user <packageName>```
 
 + Setup (Only need to do this once) 
 
@@ -348,7 +354,7 @@ EOF
 
 # Git and githib
 
-####Push to remote repository (remote repository URL already set)
+#### Push to remote repository (remote repository URL already set)
 
  1. Stage (adds files in local repository to set of staged files)
 
