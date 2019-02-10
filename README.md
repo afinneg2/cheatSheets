@@ -14,7 +14,7 @@ References, tips and instructions for doing common tasks
     source /path/to/repo/cheetSheets/aliases.sh
    ```
 
-   + This makes the following aliasis available
+   + This makes the following aliases available
 
    ```bash
    quickRef   ## quickRef.md in your default markdown editor
