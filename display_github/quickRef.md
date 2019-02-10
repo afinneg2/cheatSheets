@@ -1,3 +1,5 @@
+Quick/practical references for common tasks
+
 
 Table of Contents
 =================
@@ -41,10 +43,9 @@ Table of Contents
    * [Markdown](#markdown)
    * [Misc](#misc)
             * [tar/untar directory](#taruntar-directory)
+   * [This is a new section](#this-is-a-new-section)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
-Quick/practical references for common tasks
-
 
 # Coding 
 
@@ -423,6 +424,10 @@ Markdown is a simple language that lets you write text, tables, code blocks (syn
 + Untar
 
   + TODO: add example
+
+# This is a new section
+
+
 
 
 

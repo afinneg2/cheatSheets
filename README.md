@@ -1,10 +1,8 @@
-#cheetSheets
+# cheetSheets
 
 References, tips and instructions for doing common tasks
 
-
-
-##Install
+## Install
 
 1. Clone: ```git clone <repository URL>```
 
@@ -14,7 +12,7 @@ References, tips and instructions for doing common tasks
     source /path/to/repo/cheetSheets/aliases.sh
    ```
 
-   + This makes the following aliases available
+   This makes the following aliases available:
 
    ```bash
    quickRef   ## quickRef.md in your default markdown editor
@@ -22,3 +20,16 @@ References, tips and instructions for doing common tasks
 
 
 
+## Updating repository
+
+1. Edit quickRef.md
+
+2. Update the corresponding file in ```./display_github``` by running
+
+   ```bash
+   make
+   ```
+
+3. Push to github
+
+   
