@@ -9,7 +9,7 @@ References, tips and instructions for doing common tasks
 2. For quick access to refrence sheets add following line to your .bashrc
 
    ```bash
-    source /path/to/repo/cheetSheets/aliases.sh
+    source /path/to/repo/cheatSheets/aliases.sh
    ```
 
    This makes the following aliases available:
