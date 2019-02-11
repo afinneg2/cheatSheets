@@ -4,48 +4,9 @@ Quick/practical references for common tasks
 Table of Contents
 =================
 
-   * [Coding](#coding)
-      * [Bash](#bash)
-            * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty)
-            * [Command line parsing: getopts](#command-line-parsing-getopts)
-            * [Basic loop syntax](#basic-loop-syntax)
-            * [String trimming](#string-trimming)
-            * [Prepend/append to arrays](#prependappend-to-arrays)
-            * [Default variable values](#default-variable-values)
-            * [Named arrays](#named-arrays)
-            * [Redirection of multiple input streams](#redirection-of-multiple-input-streams)
-      * [Python](#python)
-            * [Command line parsing: sys.argv](#command-line-parsing-sysargv)
-            * [Comman line parsing: argparse](#comman-line-parsing-argparse)
-            * [Matplotlib](#matplotlib)
-      * [R](#r)
-            * [Read file into array](#read-file-into-array)
-            * [Write array](#write-array)
-            * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty-1)
-            * [Command line parsing: argparser library](#command-line-parsing-argparser-library)
-            * [Install package locally](#install-package-locally)
-            * [Installing multiple version on same machine](#installing-multiple-version-on-same-machine)
-      * [AWK](#awk)
-            * [If/else](#ifelse)
-            * [passing external variables](#passing-external-variables)
-            * [printf](#printf)
-   * [Biocluster / SLURM](#biocluster--slurm)
-            * [Setup local install directory and pip install --user &lt;packageName&gt;](#setup-local-install-directory-and-pip-install---user-packagename)
-            * [sbatch - basic](#sbatch---basic)
-            * [sbatch - without slurm script](#sbatch---without-slurm-script)
-   * [Jupyter notebooks](#jupyter-notebooks)
-            * [Use the full window](#use-the-full-window)
-   * [Git and githib](#git-and-githib)
-            * [Push to remote repository (remote repository URL already set)](#push-to-remote-repository-remote-repository-url-already-set)
-            * [Check if local repository is up-to-date](#check-if-local-repository-is-up-to-date)
-            * [Force git pull to overwrite local files](#force-git-pull-to-overwrite-local-files)
-            * [References](#references)
-   * [Markdown](#markdown)
-   * [Misc](#misc)
-            * [tar/untar directory](#taruntar-directory)
-   * [This is a new section](#this-is-a-new-section)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+Parsing local markdown file requires access to github API
+Error: You exceeded the hourly limit. See: https://developer.github.com/v3/#rate-limiting
+or place github auth token here: /Users/afinneg2/lib/cheatSheets/scripts/token.txt
 
 # Coding 
 
@@ -175,7 +136,20 @@ print(sys.argv[2])   ## Second string after script name
 
 #### Comman line parsing: argparse
 
-+ TODO: basic example
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description = "DESCRIBE SCRIPT")
+parser.add_argument( "-i", "--input" required = True , type = str , help = "DESCRIBE",nargs = "+") ## allows >1 arg
+parser.add_argument(  "--genome" , type = str )
+parser.add_argument("--float1" , default = 0.2 , type = float)
+dummyArgs = '--i x y --genome x' ## Use for debugging in a notebook. comment out in script
+args =  parser.parse_args(dummyArgs.split())
+
+args.input ## [ 'x' , 'y']
+args.genome ## 'x'
+args.float ## 0.2
+```
 
 #### Matplotlib
 

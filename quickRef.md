@@ -130,7 +130,20 @@ print(sys.argv[2])   ## Second string after script name
 
 #### Comman line parsing: argparse
 
-+ TODO: basic example
+```python
+import argparse
+
+parser = argparse.ArgumentParser(description = "DESCRIBE SCRIPT")
+parser.add_argument( "-i", "--input" required = True , type = str , help = "DESCRIBE",nargs = "+") ## allows >1 arg
+parser.add_argument(  "--genome" , type = str )
+parser.add_argument("--float1" , default = 0.2 , type = float)
+dummyArgs = '--i x y --genome x' ## Use for debugging in a notebook. comment out in script
+args =  parser.parse_args(dummyArgs.split())
+
+args.input ## [ 'x' , 'y']
+args.genome ## 'x'
+args.float ## 0.2
+```
 
 #### Matplotlib
 
