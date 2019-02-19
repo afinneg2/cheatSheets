@@ -4,9 +4,49 @@ Quick/practical references for common tasks
 Table of Contents
 =================
 
-Parsing local markdown file requires access to github API
-Error: You exceeded the hourly limit. See: https://developer.github.com/v3/#rate-limiting
-or place github auth token here: /Users/afinneg2/lib/cheatSheets/scripts/token.txt
+   * [Coding](#coding)
+      * [Bash](#bash)
+            * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty)
+            * [Command line parsing: getopts](#command-line-parsing-getopts)
+            * [Basic loop syntax](#basic-loop-syntax)
+            * [String trimming](#string-trimming)
+            * [Prepend/append to arrays](#prependappend-to-arrays)
+            * [Default variable values](#default-variable-values)
+            * [Named arrays](#named-arrays)
+            * [Redirection of multiple input streams](#redirection-of-multiple-input-streams)
+      * [Python](#python)
+            * [Command line parsing: sys.argv](#command-line-parsing-sysargv)
+            * [Comman line parsing: argparse](#comman-line-parsing-argparse)
+            * [Matplotlib](#matplotlib)
+      * [R](#r)
+            * [Read file into array](#read-file-into-array)
+            * [Write array](#write-array)
+            * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty-1)
+            * [Command line parsing: argparser library](#command-line-parsing-argparser-library)
+            * [Install package locally](#install-package-locally)
+            * [Installing multiple version on same machine](#installing-multiple-version-on-same-machine)
+      * [AWK](#awk)
+            * [If/else](#ifelse)
+            * [passing external variables](#passing-external-variables)
+            * [printf](#printf)
+   * [Biocluster / SLURM](#biocluster--slurm)
+            * [Setup local install directory and pip install --user &lt;packageName&gt;](#setup-local-install-directory-and-pip-install---user-packagename)
+            * [sbatch - basic](#sbatch---basic)
+            * [sbatch - without slurm script](#sbatch---without-slurm-script)
+   * [Jupyter notebooks](#jupyter-notebooks)
+            * [Use the full window](#use-the-full-window)
+   * [Git and githib](#git-and-githib)
+            * [Push to remote repository (remote repository URL already set)](#push-to-remote-repository-remote-repository-url-already-set)
+            * [Check if local repository is up-to-date](#check-if-local-repository-is-up-to-date)
+            * [Force git pull to overwrite local files](#force-git-pull-to-overwrite-local-files)
+            * [Delete tracked files from github](#delete-tracked-files-from-github)
+            * [References](#references)
+   * [Markdown](#markdown)
+   * [Misc](#misc)
+            * [tar/untar directory](#taruntar-directory)
+   * [This is a new section](#this-is-a-new-section)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 # Coding 
 
@@ -346,7 +386,7 @@ EOF
 3. Push
 
    ```bash
-    git push -u origin master
+    git push -u origin master 
    ```
 
 #### Check if local repository is up-to-date
@@ -373,6 +413,20 @@ git remote show origin
   git fetch --all
   git reset --hard origin/<branchName>  ## branchName is probably master
   ```
+
+#### Delete tracked files from github
+
+How to delete a tracked file that has been pushed to GitHub
+
+```bash
+# Ensure your are in correct brach
+git checkout master
+## Deletes the file (if it exists) and stop it from being tracked
+git rm <fname>     ## can also be git rm -r <dirName>
+## commit ad push
+git commit -m "<message>"
+git push origin master
+```
 
 #### References
 

@@ -340,7 +340,7 @@ EOF
 3. Push
 
    ```bash
-    git push -u origin master
+    git push -u origin master 
    ```
 
 #### Check if local repository is up-to-date
@@ -367,6 +367,20 @@ git remote show origin
   git fetch --all
   git reset --hard origin/<branchName>  ## branchName is probably master
   ```
+
+#### Delete tracked files from github
+
+How to delete a tracked file that has been pushed to GitHub
+
+```bash
+# Ensure your are in correct brach
+git checkout master
+## Deletes the file (if it exists) and stop it from being tracked
+git rm <fname>     ## can also be git rm -r <dirName>
+## commit ad push
+git commit -m "<message>"
+git push origin master
+```
 
 #### References
 
