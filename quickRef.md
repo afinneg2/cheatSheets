@@ -230,7 +230,7 @@ if ( is.na(argv$param2) ){
 #### If/else
 
 ```bash
-awk -F '{ if ( <condition> ) {<action1>; <action2> } else { <action> } }' <f_in>
+awk -F , '{ if ( <condition> ) {<action1>; <action2> } else { <action> } }' <f_in>
 ```
 
 #### passing external variables
@@ -380,6 +380,18 @@ git rm <fname>     ## can also be git rm -r <dirName>
 ## commit ad push
 git commit -m "<message>"
 git push origin master
+```
+
+#### Push to new github repository
+
+First create the reppository on GitHub, then
+
+```bash
+git remote add <myCustomName> <repo URL>
+git push <myCustomName> master
+## Alternatively (shorter but need to copy paste URL each time)
+git push  <repo URL> master
+## From https://stackoverflow.com/questions/42084116/pushing-to-a-different-git-repo/42084519
 ```
 
 #### References
