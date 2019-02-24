@@ -396,7 +396,7 @@ git push  <repo URL> master
 
 #### References
 
-+ TODO: add some good ones (concise)
++ https://blog.osteele.com/2008/05/my-git-workflow/
 
 # Markdown
 
