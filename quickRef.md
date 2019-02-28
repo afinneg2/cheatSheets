@@ -94,7 +94,7 @@ echo "second argument is $2"
   filename="${filename%.*}"  ## /path/to/myfile
   ```
 
-#### Prepend/append to arrays
+#### Prepend/append to array elements
 
 ```bash
 array=( "${array[@]/#/prefix_}" )
@@ -115,7 +115,13 @@ a="${:-default}"  ## if a undefined or empty string then set to default. Otherwi
 
 #### Redirection of multiple input streams
 
-+ TODO: write this
++ Example :  `comm` program takes two sorted input files and outputs — col 1: lines in 1st file , col 2: lines in 2nd file, col 3: lines in both files.
+
+  ```bash
+  ### suppose file 1 and file 2 not presorted
+  comm <( sort file1.txt ) <( sort file2.txt )  > comm.out.txt 
+  ## Technically I think <( ) creates temp files, so not really streams
+  ```
 
 ## Python
 
@@ -125,7 +131,6 @@ a="${:-default}"  ## if a undefined or empty string then set to default. Otherwi
 import sys
 print( sys.argv[0])  ## script name (sys.argv is just a list)
 print( sys.argv[1])  ## First string after script name
-print(sys.argv[2])   ## Second string after script name
 ```
 
 #### Comman line parsing: argparse
@@ -177,7 +182,7 @@ print(args[2]) ## arg2 when invoked as Rscript myScript.R arg1 arg2
 
 ```R
 library("argparser")
-####################################################
+#######################################################################################
 #### PARSE
 p <- arg_parser(description = "My description")
 p <- add_argument(p, "--param1", default= "optional", type = "default is 'string' another option is numeric" , help = "Must have help or will throw error" )
@@ -188,8 +193,7 @@ argv <- parse_args(p) ## this will parse from the trailing arguments to scrip at
 ## For debug you might want to pass arguments inside an R session and not from cmd line:
 ## To this using
 ## argv <- parse_args(p, c("--param1" , "param1_value", "--flag1" , "--param2" "param2_value"))
-
-########################################################
+###########################################################################################
 #### Using the argv oject
 ## Accessing parameter arguments
 argv$param1 
@@ -213,19 +217,30 @@ if ( is.na(argv$param2) ){
    R CMD INSTALL -l <My/local/lib> <pkgName>.tar.gz
    ```
 
-3. To import library into R script use
+TODO: Add instructions for local install from within R session
 
-   ```R
-   library("<pkgName>" , lib.loc="<My/local/lib>")
-   ```
+#### library paths
 
-#### Installing multiple version on same machine
+Multiple methods for setting custom library paths
 
-+ https://irvingduran.com/2016/10/installing-multiple-version-of-r-on-the-same-machine-for-macos-mac/
++  `library("<pkgName>" , lib.loc="<My/local/lib>")`
 
++ ```.libPaths()``` — with no argument prints path search for R libraries ordered by decreasing prescients. With path argument, prepends the path to search list.
 
++ analogue of PYTHONPATH
 
-## AWK
+  ```R
+  ## add the following line to .Rconfig  at ~ or .
+  .libPaths("/path/to/my/libs")
+  ```
+
+  Alterntive is setting `R_LIBS` or `R_LIBS_USER` in `.Renviron` file (located at `~`  or `.`) [^R_LIBS]
+
+#### Installing multiple R versions on same machine
+
+- https://irvingduran.com/2016/10/installing-multiple-version-of-r-on-the-same-machine-for-macos-mac/
+
+##  AWK
 
 #### If/else
 
@@ -246,8 +261,6 @@ awk -v x=$var1 -v y=$var2 '$2 == x {print y " " $1}' <f_in>
 ```bash
 awk '{printf "%s\t%s\t%s\n" , $1 , $2 , $3}'
 ```
-
-
 
 # Biocluster / SLURM
 
@@ -275,13 +288,11 @@ awk '{printf "%s\t%s\t%s\n" , $1 , $2 , $3}'
 
 + Installing your packages
 
-  + With your preferred version of python loaded run
+  ```bash
+  pip install --user <MyPackageName>  ##make sure your preferred version of python is loaded
+  ```
 
-    ```bash
-    pip install --user <MyPackageName>
-    ```
-
-#### ```sbatch``` - basic  
+#### `sbatch` — basic  
 
 ```bash
 sbatch -p <queue> --cpus-per-task=1 --mem=12GB -D <workDir> --job-name=<jobName>  -o "oe/<jobName>.o" -e "oe/<jobName>.e" --export=var1=$var1,var2=$var2... PATH/TO/SCRIPT/example.slurm
@@ -289,7 +300,7 @@ sbatch -p <queue> --cpus-per-task=1 --mem=12GB -D <workDir> --job-name=<jobName>
 
 + ```var1``` and ```var2``` are passed to example.slurm
 
-#### ```sbatch``` - without slurm script
+#### `sbatch` — without slurm script
 
 ```bash
 sbatch -p <queue> --cpus-per-task=1 --mem=12GB -D <workDir> --job-name=<jobName>  -o "oe/<jobName>.o" -e "oe/<jobName>.e" <<EOF
@@ -299,8 +310,6 @@ script_line2
 ...
 EOF
 ```
-
-
 
 # Jupyter notebooks
 
@@ -319,36 +328,23 @@ EOF
   .container { width:100%: !important; }
   ```
 
-  
 
 # Git and githib
 
 #### Push to remote repository (remote repository URL already set)
 
- 1. Stage (adds files in local repository to set of staged files)
-
-    ```bash
-    git add .   ## To unstage a file use:  git reset HEAD <YOUR-FILE>
-    ```
-
-2. Commit
-
-   ```bash
-   git commit -m <commit message>
-   ```
-
-3. Push
-
-   ```bash
-    git push -u origin master 
-   ```
+```bash
+git add .   ## To unstage a file use:  git reset HEAD <YOUR-FILE> , --dry-run is a good option
+git commit -m <commit message>  
+git push origin master 
+```
 
 #### Check if local repository is up-to-date
 
 + https://stackoverflow.com/questions/7938723/git-how-to-check-if-a-local-repo-is-up-to-date)
 
 ```bash
-git remote show origin 
+git remote show origin   ## AF: is this really better than git fetch and then some difference commed ? 
 # Returns something like:
 #HEAD branch: master
 #  Remote branch:
@@ -375,22 +371,17 @@ How to delete a tracked file that has been pushed to GitHub
 ```bash
 # Ensure your are in correct brach
 git checkout master
-## Deletes the file (if it exists) and stop it from being tracked
-git rm <fname>     ## can also be git rm -r <dirName>
-## commit ad push
+git rm <fname>   ## Deletes the file (if it exists) and stop it from being tracked, can also be git rm -r <dirName>
 git commit -m "<message>"
 git push origin master
 ```
 
 #### Push to new github repository
 
-First create the reppository on GitHub, then
-
 ```bash
+## First create repository on GitHub
 git remote add <myCustomName> <repo URL>
-git push <myCustomName> master
-## Alternatively (shorter but need to copy paste URL each time)
-git push  <repo URL> master
+git push <myCustomName> master  ## alternate is:  git push  <repo URL> master
 ## From https://stackoverflow.com/questions/42084116/pushing-to-a-different-git-repo/42084519
 ```
 
@@ -404,6 +395,77 @@ Markdown is a simple language that lets you write text, tables, code blocks (syn
 
 + A good code editor for markdown is Typora (https://typora.io/)
 + A good reference for the markdown language is https://support.typora.io/Markdown-Reference/
+
+# Distributing code
+
+### Sharing analysis
+
+When the goal is reproducibility (rather than a code library that evolves with time) use `pip install -r requirements.txt`
+
++ Provide `requirements.txt` , with format described at  [^pip_requirements]. The following example is a quick reference:
+
+  ```
+  ## For packages in Pypi reference using one of these formats:
+  numpy
+  scipy ==1.0.0
+  matplotlib >=2.1.2
+  ## For packages on github an acceptible format is:
+  git+https://github.com/KrishnaswamyLab/MAGIC.git@0.1#egg=magic
+  ```
+
+  _@tag_ specifices a taged version of repo;  _#egg=\<pakageName\>_ is necessary
+
++ Install all requirements with
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+### Sharing packages
+
+When the goal is a code library that evolves with dependencies use `setupy.py` file.  
+
+Random facts:
+
+ + setup.py should be in root directory for your package
+
+TODO: elaborate
+
+### Virtual environments in python
+
++ Virtual envrionments (VE) — python envronment (python interpreter, packages, and environemntal variables) that is isolated from your global environment.  
++ Working in a VE lets you run code with specific package versions different from those in global environment
+
+ To creare VE, run (python >=3.3 ):
+
+```bash
+python -m venv --prompt <myPromt> <dirName>    ## creates a virtual environment in <dirName> (which can be .)
+## navigate to <dirName>
+source bin/activate ## used command "deactivate" to revert to global environment
+```
+
+The result is a directory structure :
+
+```
+.
+├── bin
+│   ├── activate
+...  ├── <other stuff>
+│   ├── pip
+│   ├── python -> /home/apps/software/Anaconda3/5.1.0/bin/python
+│   └── python3 -> python
+├── include
+├── lib
+│   └── python3.6
+│       └── site-packages  <- when VE active python packages install and load from here
+├── lib64 -> lib
+└── pyvenv.cfg
+```
+
+References
+
++ https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments
++ https://docs.python.org/3/library/venv.html#venv-def
 
 # Misc
 
@@ -419,9 +481,9 @@ Markdown is a simple language that lets you write text, tables, code blocks (syn
 
   + TODO: add example
 
-# This is a new section
 
 
+# Footnotes
 
-
-
+[^pip_requirements]: https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format, https://pip.pypa.io/en/stable/user_guide/#requirements-files
+[^R_LIBS]: Add a reference  
