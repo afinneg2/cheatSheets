@@ -18,11 +18,12 @@ Table of Contents
             * [Command line parsing: sys.argv](#command-line-parsing-sysargv)
             * [Comman line parsing: argparse](#comman-line-parsing-argparse)
             * [Matplotlib](#matplotlib)
+            * [gzip module](#gzip-module)
       * [R](#r)
-            * [Read file into array](#read-file-into-array)
-            * [Write array](#write-array)
             * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty-1)
             * [Command line parsing: argparser library](#command-line-parsing-argparser-library)
+            * [Read file into array](#read-file-into-array)
+            * [Write array](#write-array)
             * [Install package locally](#install-package-locally)
             * [library paths](#library-paths)
             * [Installing multiple R versions on same machine](#installing-multiple-r-versions-on-same-machine)
@@ -207,19 +208,17 @@ args.float ## 0.2
 + setting good color schemes: TODO write this
 + good matplotlib.rc file : TODO add this as a separate document
 
+#### gzip module
+
+To save gzip compressed pickle files use  [^python_gzip] 
+
+```python
+f = gzip.open("myFile.pklz", 'wb')
+pickle.dump(myObj, f)
+f.close()
+```
+
 ## R
-
-#### Read file into array
-
-```R
-arr <- scan(file , what = "character")
-```
-
-#### Write array 
-
-```R
-write(myArr , file="myFname", sep = "\n")
-```
 
 #### Command line parsing: quick and dirty 
 
@@ -258,6 +257,20 @@ if ( is.na(argv$param2) ){
     print("param2 value not specified")
 }
 ```
+
+#### Read file into array
+
+```R
+arr <- scan(file , what = "character")
+```
+
+#### Write array 
+
+```R
+write(myArr , file="myFname", sep = "\n")
+```
+
+
 
 #### Install package locally
 
@@ -539,3 +552,5 @@ References
 
 [^pip_requirements]: https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format, https://pip.pypa.io/en/stable/user_guide/#requirements-files
 [^R_LIBS]: Add a reference  
+[^python_gzip]: http://henrysmac.org/blog/2010/3/15/python-pickle-example-including-gzip-for-compression.html
+

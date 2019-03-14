@@ -155,19 +155,17 @@ args.float ## 0.2
 + setting good color schemes: TODO write this
 + good matplotlib.rc file : TODO add this as a separate document
 
+#### gzip module
+
+To save gzip compressed pickle files use  [^python_gzip] 
+
+```python
+f = gzip.open("myFile.pklz", 'wb')
+pickle.dump(myObj, f)
+f.close()
+```
+
 ## R
-
-#### Read file into array
-
-```R
-arr <- scan(file , what = "character")
-```
-
-#### Write array 
-
-```R
-write(myArr , file="myFname", sep = "\n")
-```
 
 #### Command line parsing: quick and dirty 
 
@@ -206,6 +204,20 @@ if ( is.na(argv$param2) ){
     print("param2 value not specified")
 }
 ```
+
+#### Read file into array
+
+```R
+arr <- scan(file , what = "character")
+```
+
+#### Write array 
+
+```R
+write(myArr , file="myFname", sep = "\n")
+```
+
+
 
 #### Install package locally
 
@@ -487,3 +499,5 @@ References
 
 [^pip_requirements]: https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format, https://pip.pypa.io/en/stable/user_guide/#requirements-files
 [^R_LIBS]: Add a reference  
+[^python_gzip]: http://henrysmac.org/blog/2010/3/15/python-pickle-example-including-gzip-for-compression.html
+
