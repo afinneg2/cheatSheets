@@ -21,10 +21,10 @@ fi
 
 ## Write the header 
 top -b -n1 -p $pid | grep -E "PID[[:space:]]+USER[[:space:]]+PR[[:space:]]+NI[[:space:]]+VIRT[[:space:]]+RES[[:space:]]+SHR[[:space:]]+S[[:space:]]+%CPU[[:space:]]+%MEM[[:space:]]+TIME" | \
- 	sed -E 's/[[:space:]]+/\t/g'   | cut -f6-12 #awk 'BEGIN{ OFS="\t" };{print $0}' | cut -f5-11
+ 	sed -E 's/[[:space:]]+/\t/g'   | cut -f6-12 
 while [ $? -eq 0 ]
 	do
 	top -b -p $pid -n1 | awk -v x=$pid '{ if ( $1 == x ) {print $0} }' | sed -E 's/[[:space:]]+/\t/g' |  cut -f6-12
 	sleep $d
-	top -b -p $pid -n1 | grep $pid 
+	top -b -p $pid -n1 | grep $pid > /dev/null 
 done
