@@ -51,6 +51,7 @@ Table of Contents
          * [Virtual environments in python](#virtual-environments-in-python)
    * [Misc](#misc)
             * [tar/untar directory](#taruntar-directory)
+            * [Monitoring Process resources](#monitoring-process-resources)
    * [Footnotes](#footnotes)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
@@ -545,6 +546,10 @@ References
 + Untar
 
   + TODO: add example
+
+#### Monitoring Process resources 
+
++ Mem and CPU usage:  `./scripts/top_watch.sh`
 
 
 

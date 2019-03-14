@@ -493,6 +493,10 @@ References
 
   + TODO: add example
 
+#### Monitoring Process resources 
+
++ Mem and CPU usage:  `./scripts/top_watch.sh`
+
 
 
 # Footnotes
