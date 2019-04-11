@@ -323,6 +323,59 @@ script_line2
 EOF
 ```
 
+#### Jupyter on biocluster
+
+1. Login to biocluster and start an interactive session on a compute node. Replace <node_name> with amdsong, intelsong, or gpusong. 
+
+1. ```bash
+   ssh <username>@biologin.igb.illinois.edu
+   srun -p <node_name> --pty /bin/bash
+   ```
+
+   You can also add other parameters when using the srun command. For example, if you want to use a single GPU and alot 50 Gb of memory, you can run:
+
+   ```bash
+   srun -p gpusong --mem=50G --gres=gpu:1 --pty /bin/bash
+   ```
+
+2. In your interactive session, load jupyter and other modules you will be needing. For example: 
+
+   ```bash 
+   module swap Python Python/3.6.1-IGB-gcc-4.9.4
+   module swap PyTorch PyTorch/0.4.0-IGB-gcc-4.9.4-Python-3.6.1
+   module load jupyter/1.0.0-IGB-gcc-4.9.4-Python-3.6.1
+   ```
+
+3. Start jupyter in an interactive session on the compute node. Replace XXXXX with a five digit number between 10000 and 20000 that hopefully nobody else will be using (e.g. 10834).
+
+   ```bash
+   jupyter notebook --no-browser --port=XXXXX
+   ```
+
+   You will likely see a message that looks like this:
+
+   ```bash
+   Copy/paste this URL into your browser when you connect for the first time,
+   to login with a token:
+       http://localhost:XXXXX/?token=44777927a9c2d1921cbf4eef7dd7f18608b3ed71c5b56658
+   ```
+
+   You may need to use the long string of digits and letters as authentication in the very last step, so keep track of this.
+
+4. **On your own computer**, run the command:
+
+   ```bash
+   ssh -t -t <username>@biologin.igb.illinois.edu -L XXXXX:localhost:XXXXX ssh <compute-0-1> -L XXXXX:localhost:XXXXX
+   ```
+
+   where XXXXX is the same XXXXX from step 3, <username> is replaced by your biocluster username, and <compute-0-1> is replaced by the name of the particular node that you happen to be on (should probably show up on the terminal window in which you're running an interactive session).
+
+5. Open up a window in your web browser (e.g. Chrome, Safari) and type in the url: [http://localhost:XXXXX](http://localhost:xxxxx) where XXXXX is the same XXXXX used in the previous steps.
+
+6. (Usually only the first time) you may have to input the token from step 3 to start.
+
+(The above steps worked as of 4/11/2019)
+
 # Jupyter notebooks
 
 #### Use the full window
