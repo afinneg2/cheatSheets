@@ -19,6 +19,7 @@ Table of Contents
             * [Comman line parsing: argparse](#comman-line-parsing-argparse)
             * [Matplotlib](#matplotlib)
             * [gzip module](#gzip-module)
+            * [progressbar](#progressbar)
       * [R](#r)
             * [Command line parsing: quick and dirty](#command-line-parsing-quick-and-dirty-1)
             * [Command line parsing: argparser library](#command-line-parsing-argparser-library)
@@ -218,6 +219,31 @@ To save gzip compressed pickle files use  [^python_gzip]
 f = gzip.open("myFile.pklz", 'wb')
 pickle.dump(myObj, f)
 f.close()
+```
+
+#### progressbar
+
+install via
+
+```bash
+pip install progressbar
+conda install progressbar ## conda alternative
+```
+
+Basic example
+
+```python
+import progressbar
+import time
+
+iterable = xrange(1000)
+bar = progressbar.ProgressBar(maxval = len(iterable),
+                     widgets = [progressbar.Bar( "=", '[',']'),progressbar.Percentage()]
+                      ).start()
+for i in iterable:
+    time.sleep(0.01)
+    bar.update(i)
+bar.finish()
 ```
 
 ## R

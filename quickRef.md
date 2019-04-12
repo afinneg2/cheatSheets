@@ -165,6 +165,31 @@ pickle.dump(myObj, f)
 f.close()
 ```
 
+#### progressbar
+
+install via
+
+```bash
+pip install progressbar
+conda install progressbar ## conda alternative
+```
+
+Basic example
+
+```python
+import progressbar
+import time
+
+iterable = xrange(1000)
+bar = progressbar.ProgressBar(maxval = len(iterable),
+                     widgets = [progressbar.Bar( "=", '[',']'),progressbar.Percentage()]
+                      ).start()
+for i in iterable:
+    time.sleep(0.01)
+    bar.update(i)
+bar.finish()
+```
+
 ## R
 
 #### Command line parsing: quick and dirty 
