@@ -133,7 +133,7 @@ print( sys.argv[0])  ## script name (sys.argv is just a list)
 print( sys.argv[1])  ## First string after script name
 ```
 
-#### Comman line parsing: argparse
+#### Command line parsing: argparse
 
 ```python
 import argparse
@@ -433,8 +433,10 @@ git push origin master
 
 + https://stackoverflow.com/questions/7938723/git-how-to-check-if-a-local-repo-is-up-to-date)
 
+Option 1
+
 ```bash
-git remote show origin   ## AF: is this really better than git fetch and then some difference commed ? 
+git remote show origin   
 # Returns something like:
 #HEAD branch: master
 #  Remote branch:
@@ -443,6 +445,12 @@ git remote show origin   ## AF: is this really better than git fetch and then so
 #    master merges with remote master
 #  Local ref configured for 'git push':
 #    master pushes to master (local out of date)  ##<-------
+```
+
+Option 2:
+
+```bash
+git fetch --dry-run 
 ```
 
 #### Force git pull to overwrite local files
