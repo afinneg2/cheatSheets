@@ -6,5 +6,5 @@
 
 path=$(dirname $BASH_SOURCE )
 alias quickRef="open  $path/quickRef.md"
-
+alias quickRef_git="open  $path/quickRef_git.md"
 

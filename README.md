@@ -33,3 +33,8 @@ References, tips and instructions for doing common tasks
 3. Push to github
 
    
+
+## TODO
+
++ Add example python package installable via `setup.py`
++ Add  `quickRef_git.md`
