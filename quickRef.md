@@ -1,4 +1,4 @@
-Quick/practical references for common tasks
+__Quick/practical references for common tasks__
 
 [TOC]
 
@@ -242,8 +242,6 @@ arr <- scan(file , what = "character")
 write(myArr , file="myFname", sep = "\n")
 ```
 
-
-
 #### Install package locally
 
 1. Download the .tar.gz file for package from https://cran.r-project.org/
@@ -484,6 +482,8 @@ git push <myCustomName> master  ## alternate is:  git push  <repo URL> master
 
 #### References
 
++ `./quickRef_git.md`
+
 + https://blog.osteele.com/2008/05/my-git-workflow/
 
 # Markdown
@@ -522,17 +522,20 @@ When the goal is reproducibility (rather than a code library that evolves with t
 
 When the goal is a code library that evolves with dependencies, mangage package installation and dependences manganed  with a `setup.py` file. An example package with a basic setup.py is given in `./pyex_pkg`. (for a more comlete example of a packge see https://github.com/pypa/sampleproject)
 
-The directory layout is
+The directory layout is:
 
 ```bash
 pyex_pkg/
 ├── LICENSE
+├── MANIFEST.in
 ├── README.md
 ├── pyex_pkg
 │   ├── __init__.py
 │   ├── module1.py
-│   └── module2.py
-│   ...
+│   ├── module2.py
+│   ├── myscript_helloworld.py
+│   ...
+├── setup.cfg
 └── setup.py
 ```
 
@@ -541,6 +544,8 @@ to install navigate to the directory containing `setup.py` and run
 ```bash
 pip install .
 ```
+
+This will install the modules of your packages on your `PYTHONPATH` it will also install any executable scripts sepcified in `setup.py` on your `PATH`
 
 To uninstall run
 

@@ -34,7 +34,3 @@ References, tips and instructions for doing common tasks
 
    
 
-## TODO
-
-+ Add example python package installable via `setup.py`
-+ Add  `quickRef_git.md`
