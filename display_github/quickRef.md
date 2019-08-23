@@ -1,4 +1,4 @@
-Quick/practical references for common tasks
+__Quick/practical references for common tasks__
 
 
 Table of Contents
@@ -16,7 +16,7 @@ Table of Contents
             * [Redirection of multiple input streams](#redirection-of-multiple-input-streams)
       * [Python](#python)
             * [Command line parsing: sys.argv](#command-line-parsing-sysargv)
-            * [Comman line parsing: argparse](#comman-line-parsing-argparse)
+            * [Command line parsing: argparse](#command-line-parsing-argparse)
             * [Matplotlib](#matplotlib)
             * [gzip module](#gzip-module)
             * [progressbar](#progressbar)
@@ -54,6 +54,7 @@ Table of Contents
    * [Misc](#misc)
             * [tar/untar directory](#taruntar-directory)
             * [Monitoring Process resources](#monitoring-process-resources)
+            * [Download webpages](#download-webpages)
    * [Footnotes](#footnotes)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
@@ -123,7 +124,7 @@ echo "second argument is $2"
   	echo $i
   done
   ## Method 2 - advantage: can loop over multiple arrays with same index
-  for (( i=0; i<${#arr1[@]}; i++ ))  ## itialize, test, update 
+  for (( i=0; i<${#arr1[@]}; i++ ))  ## initialize, test, update 
           do
           echo $i
   done
@@ -189,7 +190,7 @@ print( sys.argv[0])  ## script name (sys.argv is just a list)
 print( sys.argv[1])  ## First string after script name
 ```
 
-#### Comman line parsing: argparse
+#### Command line parsing: argparse
 
 ```python
 import argparse
@@ -297,8 +298,6 @@ arr <- scan(file , what = "character")
 ```R
 write(myArr , file="myFname", sep = "\n")
 ```
-
-
 
 #### Install package locally
 
@@ -489,8 +488,10 @@ git push origin master
 
 + https://stackoverflow.com/questions/7938723/git-how-to-check-if-a-local-repo-is-up-to-date)
 
+Option 1
+
 ```bash
-git remote show origin   ## AF: is this really better than git fetch and then some difference commed ? 
+git remote show origin   
 # Returns something like:
 #HEAD branch: master
 #  Remote branch:
@@ -499,6 +500,12 @@ git remote show origin   ## AF: is this really better than git fetch and then so
 #    master merges with remote master
 #  Local ref configured for 'git push':
 #    master pushes to master (local out of date)  ##<-------
+```
+
+Option 2:
+
+```bash
+git fetch --dry-run 
 ```
 
 #### Force git pull to overwrite local files
@@ -515,8 +522,7 @@ git remote show origin   ## AF: is this really better than git fetch and then so
 How to delete a tracked file that has been pushed to GitHub
 
 ```bash
-# Ensure your are in correct brach
-git checkout master
+git checkout master # Ensure your are in correct brach
 git rm <fname>   ## Deletes the file (if it exists) and stop it from being tracked, can also be git rm -r <dirName>
 git commit -m "<message>"
 git push origin master
@@ -532,6 +538,8 @@ git push <myCustomName> master  ## alternate is:  git push  <repo URL> master
 ```
 
 #### References
+
++ `./quickRef_git.md`
 
 + https://blog.osteele.com/2008/05/my-git-workflow/
 
@@ -551,7 +559,7 @@ When the goal is reproducibility (rather than a code library that evolves with t
 + Provide `requirements.txt` , with format described at  [^pip_requirements]. The following example is a quick reference:
 
   ```
-  ## For packages in Pypi reference using one of these formats:
+  ## For packages in pypi reference using one of these formats:
   numpy
   scipy ==1.0.0
   matplotlib >=2.1.2
@@ -569,13 +577,38 @@ When the goal is reproducibility (rather than a code library that evolves with t
 
 ### Sharing packages
 
-When the goal is a code library that evolves with dependencies use `setupy.py` file.  
+When the goal is a code library that evolves with dependencies, mangage package installation and dependences manganed  with a `setup.py` file. An example package with a basic setup.py is given in `./pyex_pkg`. (for a more comlete example of a packge see https://github.com/pypa/sampleproject)
 
-Random facts:
+The directory layout is:
 
- + setup.py should be in root directory for your package
+```bash
+pyex_pkg/
+├── LICENSE
+├── MANIFEST.in
+├── README.md
+├── pyex_pkg
+│   ├── __init__.py
+│   ├── module1.py
+│   ├── module2.py
+│   ├── myscript_helloworld.py
+│   ...
+├── setup.cfg
+└── setup.py
+```
 
-TODO: elaborate
+to install navigate to the directory containing `setup.py` and run
+
+```bash
+pip install .
+```
+
+This will install the modules of your packages on your `PYTHONPATH` it will also install any executable scripts sepcified in `setup.py` on your `PATH`
+
+To uninstall run
+
+```bash
+pip uninstall <pkg_name>
+```
 
 ### Virtual environments in python
 
@@ -631,7 +664,15 @@ References
 
 + Mem and CPU usage:  `./scripts/top_watch.sh`
 
+#### Download webpages
 
+To resursively download the webpages of a site (e.g. for offline reading) run
+
+```bash
+wget -r -k -l 10 www.mytargetSite.com ## -l sets the max depth, -k fixes links so they reference local file system
+```
+
+For many more uses of `wget` see https://www.lifewire.com/uses-of-command-wget-2201085
 
 # Footnotes
 
