@@ -1,10 +1,10 @@
-[TOC]
-
+__Quick References for Git__
 
 Table of Contents
 =================
 
-      * [Useful commands](#useful-commands)
+   * [Cheat Sheet](#cheat-sheet)
+   * [Useful commands](#useful-commands)
          * [Overview](#overview)
          * [Create Repo](#create-repo)
          * [Branches](#branches)
@@ -26,11 +26,13 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
+# Cheat Sheet
+
 <img src="misc/git_cheat_sheet.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-## Useful commands
+# Useful commands
 
 ### Overview
 

@@ -1,12 +1,13 @@
+__Quick References for Git__
 [TOC]
 
-## Cheat Sheet
+# Cheat Sheet
 
 <img src="misc/git_cheat_sheet.png"
      alt="Markdown Monster icon"
      style="float: left; margin-right: 10px;" />
 
-## Useful commands
+# Useful commands
 
 ### Overview
 
