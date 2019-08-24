@@ -7,4 +7,5 @@
 path=$(dirname $BASH_SOURCE )
 alias quickRef="open  $path/quickRef.md"
 alias quickRef_git="open  $path/quickRef_git.md"
-
+alias quickRef_conda="open $path/conda-cheatsheet.pdf"
+alias quickRef_pyPackages="open $path/quickRef_pyPackages.md"
